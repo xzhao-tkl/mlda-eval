@@ -1,0 +1,5 @@
+Task,Template,Accuracy,Norm_accuracy
+adaxeval-en_knowledge_memorization,mcqa_clozed_prompt,0.27070457354758964,0.36711990111248455
+adaxeval-en_knowledge_generalization,mcqa_minimal,0.27812113720642767,0.34363411619283063
+adaxeval-ja_knowledge_memorization,mcqa_clozed_prompt,0.3407755581668625,0.45671758715236976
+adaxeval-ja_knowledge_generalization,mcqa_minimal,0.25695260477869175,0.35918527222875046
