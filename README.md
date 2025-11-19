@@ -56,24 +56,3 @@ This module is adapted from the implementation in
 The evaluation scripts and notebook for analysis are all included in `evaluation/dataset` folder.
 
 Please note that, due to **licensing restrictions** associated with **J-STAGE**, the source corpus used to construct our evaluation dataset, we are unable to include the evaluation data in this repository.
-
-
-## Citation
-
-If you use this code, please cite our paper:
-
-```
-@misc{zhao2025tracingmultilingualknowledgeacquisition,
-      title={Tracing Multilingual Knowledge Acquisition Dynamics in Domain Adaptation: A Case Study of English-Japanese Biomedical Adaptation}, 
-      author={Xin Zhao and Naoki Yoshinaga and Yuma Tsuta and Akiko Aizawa},
-      year={2025},
-      eprint={2510.12115},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2510.12115}, 
-}
-```
-
-## Contact
-
-For questions or collaborations, please open an issue or contact the authors.
