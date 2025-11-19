@@ -1,0 +1,31 @@
+default_config: /home/xzhao/workspace/roman-pretrain/experiments/configs/default_config.yaml
+
+description: |
+  Using Japanaese medical data only to pretrain a model (0.5B)
+
+name: exp1-ja-low_overlap
+
+dataset:
+  collection:
+    knowledge:
+      ja-medical: 
+        num_tokens: 0.5
+        data_filepath: /data/xzhao/dataset/roman-pretrain/instructions/ja/medical_native_low_overlap.jsonl
+        data_suffix: low_overlap
+      en-medical: 0
+      zh-medical: 0
+    crosslingual-transfer:
+      en-ja:
+        balanced-trans: 0
+        balanced-roman: 0
+        balanced-roman2en: 0
+        balanced-roman2native: 0
+        science-trans: 0
+        science-roman: 0
+        science-roman2en: 0
+        medical-trans: 0
+        medical-roman: 0
+        medical-halfroman: 0
+        medical-roman2en: 0
+  tokenizer: 
+    repeat: 4

@@ -1,0 +1,44 @@
+default_config: /home/xzhao/workspace/roman-pretrain/experiments/configs/default_config.yaml
+
+description: |
+  Roman2native + Roman2en
+
+name: exp5-medical-en_jstage
+
+dataset:
+  collection:
+    knowledge:
+      ja-medical: 0
+      en-medical: 0
+      zh-medical: 0
+      en_jstage-medical:
+        num_tokens: 0.5
+        doc_ids: /data/xzhao/experiments/roman-pretrain/datasets/kg-datasets/ja-0.5/doc_ids.jsonl
+    crosslingual-transfer:
+      en-ja:
+        balanced-trans: 0
+        balanced-roman: 0
+        balanced-roman2en: 0
+        balanced-roman2native: 0
+        science-trans: 0
+        science-roman: 0
+        science-roman2en: 0
+        science-roman2native: 0
+        medical-trans: 0
+        medical-roman: 0
+        medical-halfroman: 0
+        medical-roman2en:
+          num_tokens: 0.25
+          exclude: True
+        medical-roman2native:
+          num_tokens: 0.25
+          exclude: True
+  
+train:
+  initial-checkpoint-path: <path-of-initial-model>
+
+logging:
+  job-name: 0068-default
+  output-log-path: <path-of-log-file>
+  error-log-path: <path-of-log-file>
+

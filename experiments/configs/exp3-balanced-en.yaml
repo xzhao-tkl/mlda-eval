@@ -1,0 +1,38 @@
+description: |
+  Teach to cross-lingual transfer by balanced translation instructions
+
+default_config: /home/xzhao/workspace/roman-pretrain/experiments/configs/default_config.yaml
+
+name: exp3-balanced-en
+
+dataset:
+  collection:
+    knowledge:
+      ja-medical: 0
+      en-medical: 0.5
+      zh-medical: 0
+    crosslingual-transfer:
+      en-ja:
+        balanced-trans: 0.5
+        balanced-roman: 0
+        balanced-roman2en: 0
+        balanced-roman2native: 0
+        science-trans: 0
+        science-roman: 0
+        science-roman2en: 0
+        medical-trans: 0
+        medical-roman: 0
+        medical-halfroman: 0
+        medical-roman2en: 0
+  tokenizer: 
+    tokenizer-type: llm-jp
+    repeat: 2
+
+train:
+  initial-checkpoint-path: <path-of-initial-model>
+
+logging:
+  job-name: 0068-default
+  output-log-path: <path-of-log-file>
+  error-log-path: <path-of-log-file>
+

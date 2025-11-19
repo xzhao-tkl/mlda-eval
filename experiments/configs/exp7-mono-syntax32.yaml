@@ -1,0 +1,29 @@
+default_config: /home/xzhao/workspace/roman-pretrain/experiments/configs/default_config.yaml
+
+description: |
+  Monolingual denoising instruction, using UMLS for adding noise, 1B domain corpus + 1B denoising corpus
+
+name: exp7-mono-syntax32
+
+dataset:
+  collection:
+    instruction-tuning:
+      denoising:
+        data_suffix: "mono.syntax32"
+        data_filepath: "/data/xzhao/dataset/roman-pretrain/instructions/denoising/syntax.denoising.tuning/denoising.all.word32.jsonl"
+        num_instructions: null
+  tokenizer: 
+    repeat: 1
+
+train:
+  tune: true
+  initial_checkpoint_path: /data/xzhao/experiments/roman-pretrain/exps/exp1-multi-en_jstage/training/final_checkpoint
+  lr: 4e-6
+  lr_warmup_init: 4e-6
+  min_lr: 1e-6
+  
+logging:
+  job-name: 0068-TRAIN
+  output-log-path: <path-of-log-file>
+  error-log-path: <path-of-log-file>
+

@@ -1,0 +1,44 @@
+default_config: /home/xzhao/workspace/roman-pretrain/experiments/configs/default_config.yaml
+
+description: |
+  Using Japanaese medical data only to pretrain a model (0.5B)
+
+name: exp6-multi-en_jstage-en2ja50
+
+dataset:
+  collection:
+    knowledge:
+      ja-medical: 0
+      en-medical: 0
+      zh-medical: 0
+      en_jstage-medical:
+        num_tokens: 0.5
+        doc_ids: /data/xzhao/experiments/roman-pretrain/datasets/kg-datasets/ja-0.5/doc_ids.jsonl
+      codeswitch:
+        num_tokens: 0.5
+        data_suffix: "en2ja50"
+        data_filepath: /data/xzhao/dataset/roman-pretrain/instructions/en2ja-50/denoising-en2ja-50.jsonl
+    crosslingual-transfer:
+      en-ja:
+        balanced-trans: 0
+        balanced-roman: 0
+        balanced-roman2en: 0
+        balanced-roman2native: 0
+        science-trans: 0
+        science-roman: 0
+        science-roman2en: 0
+        medical-trans: 0
+        medical-roman: 0
+        medical-halfroman: 0
+        medical-roman2en: 0
+  tokenizer: 
+    repeat: 2
+
+train:
+  initial-checkpoint-path: <path-of-initial-model>
+
+logging:
+  job-name: 0068-TRAIN
+  output-log-path: <path-of-log-file>
+  error-log-path: <path-of-log-file>
+

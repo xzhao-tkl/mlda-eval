@@ -1,0 +1,97 @@
+description: |
+  Teach to cross-lingual transfer by romanization instruction on both balanced Japanese sentences and translations
+
+name: null
+env: /data/xzhao/environment
+exp-dir: /data/xzhao/experiments/roman-pretrain/exps
+
+dataset:
+  dataset-dir: /data/xzhao/dataset/roman-pretrain/instructions
+  kg-dataset-dir: /data/xzhao/experiments/roman-pretrain/datasets/kg-datasets
+  ct-dataset-dir: /data/xzhao/experiments/roman-pretrain/datasets/ct-datasets
+  it-dataset-dir: /data/xzhao/experiments/roman-pretrain/datasets/it-datasets
+  collection:
+    knowledge: 
+      ja-medical: 0
+      en-medical: 0
+      zh-medical: 0
+      en_jstage-medical: 0
+    crosslingual-transfer:
+      en-ja:
+        balanced-trans: 0
+        balanced-roman: 0
+        balanced-roman2en: 0
+        balanced-roman2native: 0
+        science-trans: 0
+        science-roman: 0
+        science-roman2en: 0
+        science-roman2native: 0
+        medical-trans: 0
+        medical-roman: 0
+        medical-halfroman: 0
+        medical-roman2en: 0
+        medical-roman2native: 0
+      en-zh:
+        balanced-trans: 0
+        balanced-roman: 0
+        balanced-roman2en: 0
+        science-trans: 0
+        science-roman: 0
+        science-roman2en: 0
+        medical-trans: 0
+        medical-roman: 0
+        medical-roman2en: 0
+      zh-ja:
+        balanced-trans: 0
+        balanced-roman: 0
+        balanced-roman2en: 0
+        science-trans: 0
+        science-roman: 0
+        science-roman2en: 0
+        medical-trans: 0
+        medical-roman: 0
+        medical-roman2en: 0
+    instruction-tuning:
+      denoising:
+        data_suffix: null
+        data_filepath: null
+        num_instructions: null
+  tokenizer: 
+    type: llm-jp
+    megatrontype: Llama2Tokenizer
+    path: /data/xzhao/environment/src/llm-jp-tokenizer/models/ver3.0/llm-jp-tokenizer-100k.ver3.0b1.model
+    repeat: 1
+
+train:
+  tune: false
+  
+  # Parallelism-related parameters
+  num_nodes: 4
+  num_gpus_per_node: 8
+  tensor_parallel_size: 2
+  pipeline_parallel_size: 4
+  context_parallel_size: 1
+  
+  # Training parameters
+  micro_batch_size: 1
+  global_batch_size: 32
+  lr: 2e-5
+  lr_warmup_init: 2e-5
+  min_lr: 2e-6
+  weight_decay: 0.1
+  lr_warmup_steps: 0
+  grad_clip: 1
+
+  # Model configurations
+  num_layers: 40
+  hidden_size: 5120
+  ffn_hidden_size: 13824
+  num_heads: 40
+  seq_length: 4096
+  initial_checkpoint_path: /data/xzhao/projects/pretrained_checkpoints/llm-jp-3-13b/tp2-pp4-cp1
+
+logging:
+  job_name: 0068-default
+  output_log_path: null
+  error_log_path: null
+

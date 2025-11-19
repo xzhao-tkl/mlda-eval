@@ -1,0 +1,29 @@
+default_config: /home/xzhao/workspace/roman-pretrain/experiments/configs/default_config.yaml
+
+description: |
+  Directly add noise to the pretraining instructions
+
+name: exp8-mono-syntax32
+
+dataset:
+  collection:
+    knowledge:
+      noisy:
+        num_tokens: 0
+        repeat: 1
+        data_suffix: "en.mono.wordnet32.one"
+        data_filepaths: [
+          "/data/xzhao/dataset/roman-pretrain/noisy_instructions/en_jstage/wordnet.monolingual.32.jsonl/0.jsonl",
+          "/data/xzhao/dataset/roman-pretrain/noisy_instructions/en_jstage/wordnet.monolingual.32.jsonl/1.jsonl",
+          "/data/xzhao/dataset/roman-pretrain/noisy_instructions/en_jstage/wordnet.monolingual.32.jsonl/2.jsonl",
+          "/data/xzhao/dataset/roman-pretrain/noisy_instructions/en_jstage/wordnet.monolingual.32.jsonl/3.jsonl"
+        ]
+        line_clip: 3141889
+  tokenizer: 
+    repeat: 1
+  
+logging:
+  job-name: 0068-TRAIN
+  output-log-path: <path-of-log-file>
+  error-log-path: <path-of-log-file>
+

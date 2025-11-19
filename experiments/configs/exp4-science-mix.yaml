@@ -1,0 +1,40 @@
+description: |
+  Teach to cross-lingual transfer by romanization instruction on balanced Japanese sentences
+
+default_config: /home/xzhao/workspace/roman-pretrain/experiments/configs/default_config.yaml
+
+name: exp4-science
+
+dataset:
+  collection:
+    knowledge:
+      ja-medical: 0.5
+      en-medical: 0.5
+      zh-medical: 0
+    crosslingual-transfer:
+      en-ja:
+        balanced-trans: 0
+        balanced-roman: 0
+        balanced-roman2en: 0
+        balanced-roman2native: 0
+        science-trans: 0
+        science-roman: 0
+        science-roman2en: 0
+        science-roman2native: 1
+        medical-trans: 0
+        medical-roman: 0
+        medical-halfroman: 0
+        medical-roman2en: 0
+        medical-roman2native: 0
+  tokenizer: 
+    tokenizer-type: llm-jp
+    tokenized-data-path: <path-of-tokenized-dataset>
+
+train:
+  initial-checkpoint-path: <path-of-initial-model>
+
+logging:
+  job-name: 0068-default
+  output-log-path: <path-of-log-file>
+  error-log-path: <path-of-log-file>
+
