@@ -10,10 +10,16 @@ The data generation component creates both training and evaluation datasets for 
 ### Training Data Generation
 
 The training data pipeline (`datasets/generate_train/`) creates instruction datasets from medical abstracts through multiple stages, including regex-based instruction creation, LLM-based QA generation, romanization, and instruction formatting.
+Please refer to [datasets/generate_train/README.md](datasets/generate_train/README.md) for details of training data generation. 
 
 ### Evaluation Data Generation
 
 The evaluation component (`datasets/generate_eval/`) creates benchmarks for assessing cross-lingual medical knowledge understanding and distractor quality in multiple-choice questions, based on the proposal of AdaXEval.
+
+AdaXEval follows four steps to generate multi-choice questions given the medical documents, including fact detection, queries crafting, distractor generation and quality filtering. 
+The annotation for generated evaluation are conducted by human, while AI (GPT APIs) are used for assiting annotator understanding the medical knowledge and context.
+The AI-based evaluation references are only used for evaluation of distractor quality and cross-linugal factuality. 
+The GPT-based annotation used for reference of human annotation are included in [ANNOTATIONS](datasets/generate_eval/annotation). 
 
 ## Training Settings
 
@@ -21,11 +27,11 @@ The training settings component manages model training configurations and execut
 
 ### Configuration System
 
-Training configurations are defined in YAML files that specify dataset collections, model parameters, parallelism settings, and hyperparameters [4](#1-3) . 
+Training configurations are defined in YAML files that specify dataset collections, model parameters, parallelism settings, and hyperparameters. 
 
 ### Training Pipeline
 
-The training pipeline consists of three stages executed via shell scripts [6](#1-5) :
+The training pipeline consists of three stages executed via shell scripts:
 1. Dataset generation from configuration
 2. Tokenization 
 3. Distributed training using Megatron-LM
